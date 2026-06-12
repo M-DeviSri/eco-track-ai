@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EcoTrack AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>EcoTrack AI</h1>
+
+<form method="POST">
+
+    <label>Daily Travel (km)</label>
+    <input type="number" name="travel" required>
+
+    <label>Monthly Electricity Usage (kWh)</label>
+    <input type="number" name="electricity" required>
+
+    <button type="submit">Calculate</button>
+
+</form>
+
+{% if score is not none %}
+    <h2>Carbon Score: {{ score }}</h2>
+    <p>{{ recommendation }}</p>
+{% endif %}
+
+</body>
+</html>
