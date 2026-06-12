@@ -8,12 +8,12 @@
 </head>
 <body>
 
-<div class="container">
+<main class="container">
 
     <h1>🌱 EcoTrack AI</h1>
 
     <p class="subtitle">
-        Track your carbon footprint and receive personalized sustainability recommendations.
+        Understand, track and reduce your carbon footprint through simple actions and personalized insights.
     </p>
 
     <form method="POST">
@@ -24,6 +24,7 @@
             name="travel"
             type="number"
             min="0"
+            aria-label="Daily Travel Distance"
             placeholder="Enter daily travel distance"
             required>
 
@@ -33,11 +34,12 @@
             name="electricity"
             type="number"
             min="0"
+            aria-label="Monthly Electricity Usage"
             placeholder="Enter monthly electricity usage"
             required>
 
         <label for="diet">Diet Type</label>
-        <select id="diet" name="diet">
+        <select id="diet" name="diet" aria-label="Diet Type">
             <option value="vegetarian">Vegetarian</option>
             <option value="non-vegetarian">Non-Vegetarian</option>
         </select>
@@ -47,13 +49,34 @@
     </form>
 
     {% if score is not none %}
+
     <div class="result">
-        <h2>Carbon Score: {{ "%.2f"|format(score) }}</h2>
+
+        <h2>Your Carbon Score</h2>
+
+        <p class="score">{{ "%.2f"|format(score) }}</p>
+
+        <h3>Category: {{ category }}</h3>
+
         <p>{{ recommendation }}</p>
+
+        <h3>Recommended Actions</h3>
+
+        <ul>
+            {% for tip in tips %}
+                <li>{{ tip }}</li>
+            {% endfor %}
+        </ul>
+
     </div>
+
     {% endif %}
 
-</div>
+</main>
+
+<footer>
+    <p>EcoTrack AI helps users understand and reduce carbon emissions.</p>
+</footer>
 
 </body>
 </html>
