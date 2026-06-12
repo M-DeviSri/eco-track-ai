@@ -1,300 +1,364 @@
-# ECOTRACK AI - CARBON FOOTPRINT AWARENESS PLATFORM
+# \# 🌍 EcoTrack AI – Carbon Footprint Analyzer
 
 # 
 
-# OVERVIEW
-
-# EcoTrack AI is a smart AI-powered sustainability platform that helps individuals understand, track, and reduce their carbon footprint through personalized insights, activity tracking, and actionable recommendations.
+# EcoTrack AI is a Flask-based web application that helps users calculate and understand their carbon footprint based on daily activities such as travel, electricity usage, and dietary habits. It provides impact classification and personalized eco-friendly recommendations.
 
 # 
 
-# The goal is to make sustainability simple, engaging, and measurable for everyday users.
+# \---
 
 # 
 
-# FEATURES
+# \## 🚀 Features
 
 # 
 
-# Carbon Footprint Tracking
+# \* 🌱 Carbon footprint score calculation
+
+# \* 📊 Impact classification (Low / Moderate / High)
+
+# \* 💡 Personalized sustainability recommendations
+
+# \* 🌍 Web UI for user interaction
+
+# \* 📡 REST API for programmatic access
+
+# \* 🧪 Fully tested backend using pytest
+
+# \* 📈 HTML test reports + coverage reports
 
 # 
 
-# \* Track daily activities like travel, electricity usage, food habits, and shopping
-
-# \* Automatically estimate CO2 emissions based on user inputs
+# \---
 
 # 
 
-# AI-Powered Insights
+# \## 🏗️ Tech Stack
 
 # 
 
-# \* Personalized suggestions to reduce carbon footprint
+# \* Python 3
 
-# \* Behavioral analysis using historical data
+# \* Flask
 
-# \* Smart recommendations for eco-friendly alternatives
+# \* HTML / CSS
 
-# 
+# \* Pytest
 
-# Dashboard Analytics
-
-# 
-
-# \* Visual breakdown of emissions by category
-
-# \* Weekly and monthly progress tracking
-
-# \* Goal setting for emission reduction
+# \* Requests
 
 # 
 
-# Smart Alerts
+# \---
 
 # 
 
-# \* Notifications for high-impact activities
-
-# \* Eco tips based on user behavior
+# \## 📡 API Documentation
 
 # 
 
-# Gamification (Optional)
+# \### ▶ Endpoint
 
 # 
 
-# \* Eco points for sustainable actions
+# ```
 
-# \* Leaderboards for engagement
+# POST /api/calculate
 
-# \* Achievement badges for milestones
-
-# 
-
-# TECH STACK
+# ```
 
 # 
 
-# Frontend
+# \### 📥 Request Body
 
 # 
 
-# \* React.js or Next.js
+# ```json
 
-# \* Tailwind CSS or Material UI
+# {
 
-# \* Chart.js or Recharts
+# &#x20; "travel": 50,
 
-# 
+# &#x20; "electricity": 100,
 
-# Backend
+# &#x20; "diet": "vegetarian"
 
-# 
+# }
 
-# \* Node.js with Express or Python Flask
-
-# \* REST APIs
+# ```
 
 # 
 
-# Database
+# \### 📤 Response
 
 # 
 
-# \* MongoDB or PostgreSQL
+# ```json
+
+# {
+
+# &#x20; "score": 56.0,
+
+# &#x20; "category": "Moderate Impact",
+
+# &#x20; "recommendation": "Your carbon footprint is moderate. Small lifestyle changes can make a big difference.",
+
+# &#x20; "tips": \[
+
+# &#x20;   "Turn off unused appliances",
+
+# &#x20;   "Reduce unnecessary travel",
+
+# &#x20;   "Use energy-efficient devices",
+
+# &#x20;   "Track monthly electricity usage"
+
+# &#x20; ]
+
+# }
+
+# ```
 
 # 
 
-# AI Layer
+# \---
 
 # 
 
-# \* OpenAI API or custom ML models
-
-# \* Rule-based emission calculator as fallback
+# \## ▶️ How to Run the Project
 
 # 
 
-# Deployment
+# \### 1. Clone the repository
 
 # 
 
-# \* Vercel or Netlify for frontend
+# ```bash
 
-# \* AWS, GCP, or Render for backend
+# git clone https://github.com/M-DeviSri/eco-track-ai.git
 
-# 
+# cd eco-track-ai
 
-# PROJECT STRUCTURE
-
-# 
-
-# ecotrack-ai/
-
-# frontend/
+# ```
 
 # 
 
-# \* src/
-
-# \* components/
-
-# \* pages/
+# \### 2. Create virtual environment
 
 # 
 
-# backend/
+# ```bash
+
+# python -m venv venv
+
+# ```
 
 # 
 
-# \* routes/
-
-# \* controllers/
-
-# \* models/
-
-# \* services/
+# \### 3. Activate environment
 
 # 
 
-# ai-model/
+# \*\*Windows:\*\*
 
 # 
 
-# \* prompt-engine/
+# ```bash
 
-# \* emission-calculator/
+# venv\\Scripts\\activate
 
-# 
-
-# public/
-
-# package.json
-
-# README.txt
+# ```
 
 # 
 
-# SETUP INSTRUCTIONS
+# \*\*Mac/Linux:\*\*
 
 # 
 
-# 1\. Clone repository
+# ```bash
 
-# &#x20;  git clone \[https://github.com/your-username/ecotrack-ai.git](https://github.com/your-username/ecotrack-ai.git)
+# source venv/bin/activate
 
-# &#x20;  cd ecotrack-ai
-
-# 
-
-# 2\. Install frontend dependencies
-
-# &#x20;  cd frontend
-
-# &#x20;  npm install
-
-# &#x20;  npm start
+# ```
 
 # 
 
-# 3\. Install backend dependencies
-
-# &#x20;  cd backend
-
-# &#x20;  npm install
-
-# &#x20;  npm run dev
+# \### 4. Install dependencies
 
 # 
 
-# ENVIRONMENT VARIABLES
+# ```bash
+
+# pip install flask pytest requests pytest-cov pytest-html
+
+# ```
 
 # 
 
-# Create a .env file inside backend folder:
+# \---
 
 # 
 
-# PORT=5000
-
-# MONGO\_URI=your\_mongodb\_connection
-
-# OPENAI\_API\_KEY=your\_api\_key
-
-# JWT\_SECRET=your\_secret\_key
+# \## ▶️ Run the Application
 
 # 
 
-# EXAMPLE USE CASE
+# ```bash
+
+# python app.py
+
+# ```
 
 # 
 
-# 1\. User logs activity like travelling 15 km by car
-
-# 2\. System calculates CO2 emission
-
-# 3\. AI suggests alternatives like public transport
-
-# 4\. Dashboard updates progress
+# Open in browser:
 
 # 
 
-# AI LOGIC
+# ```
+
+# http://127.0.0.1:5000
+
+# ```
 
 # 
 
-# \* Rule-based emission calculations per activity
-
-# \* Natural language processing for activity input
-
-# \* Recommendation engine for eco-friendly suggestions
+# \---
 
 # 
 
-# EVALUATION FOCUS
+# \## 🧪 Run Tests
 
 # 
 
-# \* Code quality and structure
-
-# \* AI integration effectiveness
-
-# \* Efficiency of calculations
-
-# \* User experience
-
-# \* Real-world impact alignment
+# \### Run all tests
 
 # 
 
-# FUTURE IMPROVEMENTS
+# ```bash
+
+# pytest -v
+
+# ```
 
 # 
 
-# \* Mobile app version
-
-# \* IoT-based live tracking
-
-# \* Community challenges
-
-# \* Carbon offset marketplace
+# \### Generate HTML test report
 
 # 
 
-# AUTHOR
+# ```bash
+
+# pytest -v --html=report.html --self-contained-html
+
+# ```
 
 # 
 
-# Devi Sri Sravani
-
-# Investigation Associate | Computer Science Graduate | AI Enthusiast
+# \### Run coverage report
 
 # 
 
-# LICENSE
+# ```bash
 
-# MIT License
+# pytest --cov=app --cov-report=term-missing
+
+# ```
+
+# 
+
+# \---
+
+# 
+
+# \## 📊 Project Highlights
+
+# 
+
+# \* ✔ Fully functional Flask API
+
+# \* ✔ Real-time carbon footprint calculation
+
+# \* ✔ Edge case handling
+
+# \* ✔ Automated test suite (7/7 passing)
+
+# \* ✔ HTML test reporting
+
+# \* ✔ Code coverage reporting (\~77%)
+
+# 
+
+# \---
+
+# 
+
+# \## 📸 Screenshots
+
+# 
+
+# \### 🖥️ Web UI
+
+# !\[UI](assets/ui.png)
+
+# 
+
+# \### 📡 API Response
+
+# !\[API](assets/api.png)
+
+# 
+
+# \### 🧪 Test Report
+
+# !\[Tests](assets/tests.png)
+
+# \---
+
+# 
+
+# \## 🔮 Future Improvements
+
+# 
+
+# \* AI-based personalized recommendations
+
+# \* User history tracking dashboard
+
+# \* Carbon footprint trends visualization
+
+# \* Mobile-friendly UI improvements
+
+# 
+
+# \---
+
+# 
+
+# \## 👩‍💻 Author
+
+# 
+
+# Developed by \*\*Devi Sri Sravani\*\*
+
+# 
+
+# \---
+
+# 
+
+# \## 🏁 Project Status
+
+# 
+
+# ✔ Backend Complete
+
+# ✔ API Working
+
+# ✔ Testing Complete
+
+# ✔ Ready for Deployment
 
 
 
