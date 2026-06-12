@@ -2,23 +2,41 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+def calculate_score(travel, electricity):
+    return (travel * 0.12) + (electricity * 0.5)
+
+def get_recommendation(score):
+    if score > 100:
+        return "High footprint. Reduce vehicle usage and electricity consumption."
+    elif score > 50:
+        return "Moderate footprint. Consider adopting more sustainable habits."
+    else:
+        return "Great job! Your footprint is relatively low."
+
 @app.route("/", methods=["GET", "POST"])
 def home():
+
     score = None
     recommendation = ""
 
     if request.method == "POST":
-        travel = float(request.form["travel"])
-        electricity = float(request.form["electricity"])
 
-        score = (travel * 0.12) + (electricity * 0.5)
+        try:
+            travel = max(0, float(request.form["travel"]))
+            electricity = max(0, float(request.form["electricity"]))
+            diet = request.form["diet"]
 
-        if score > 100:
-            recommendation = "High footprint. Reduce vehicle usage and energy consumption."
-        elif score > 50:
-            recommendation = "Moderate footprint. Consider switching to sustainable habits."
-        else:
-            recommendation = "Great job! Your footprint is relatively low."
+            score = calculate_score(travel, electricity)
+
+            recommendation = get_recommendation(score)
+
+            if diet == "non-vegetarian":
+                recommendation += " Consider reducing meat consumption to lower emissions."
+            else:
+                recommendation += " Great choice! Plant-based diets generally have a lower carbon footprint."
+
+        except ValueError:
+            recommendation = "Invalid input. Please enter valid values."
 
     return render_template(
         "index.html",
